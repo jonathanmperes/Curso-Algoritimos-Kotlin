@@ -1,4 +1,5 @@
 fun main() {
+
     val produtos = arrayOf<Produto>(
         Produto(nome = "Lamborguini", preco = 1000000.0),
         Produto(nome = "Jipe", preco = 46000.0),
@@ -6,18 +7,11 @@ fun main() {
         Produto(nome = "Smart", preco = 46000.0),
         Produto(nome = "Fusca", preco = 17000.0)
     )
-    var maisBarato = Double.MAX_VALUE
-    for (produto in produtos) {
-        if (produto.preco < maisBarato) {
-            maisBarato = produto.preco
-        }
-    }
-    println(maisBarato)
 
-    produtos.forEach { produto ->
-        if (produto.preco < maisBarato) {
-            produto.preco.also { maisBarato = it }
-        }
+    val sortedBy = produtos.sortedBy { it.preco }
+
+    sortedBy.forEach { produto ->
+        println("${produto.nome} custa ${produto.preco}")
     }
-    println(maisBarato)
 }
+
